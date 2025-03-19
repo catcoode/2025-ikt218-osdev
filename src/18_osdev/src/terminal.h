@@ -6,5 +6,5 @@
 
 void terminal_initialize();
 void terminal_write(const char* str);
-
+void write_string( int colour, const char *string );
 #endif
