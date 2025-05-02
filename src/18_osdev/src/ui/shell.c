@@ -91,7 +91,7 @@ void reset_stop_flag() {
 
 void process_command(char* command) {
     if (strcmp(command, "song") == 0) {
-        monitor_write("Choose song :\n1. Mario\n2. Wii\n3. Star Wars\n 4. Battlefield 1942\n5. Music 2\n6. Music 3\n7. Music 4\n8. Music 5\n9. Music 6\n> ");
+        monitor_write("Choose song :\n1. Mario\n2. Wii\n3. Star Wars\n4. Battlefield 1942\n5. Music 2\n6. Music 3\n7. Music 4\n8. Music 5\n9. Music 6\n> ");
         
         char selection[128];
         read_line(selection);

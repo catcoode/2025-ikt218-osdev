@@ -109,30 +109,27 @@ void play_song_impl(Song *song) {
 
     for (uint32_t i = 0; i < song->length && !stop_requested; i++) {
         Note current_note = song->notes[i];
-        if (current_note.frequency > 0)
-            monitor_write("Playing note\n");
-        else
+        if (current_note.frequency > 0){
+            monitor_write("Playing note, frequency = ");
+            monitor_write_dec(current_note.frequency);
+            monitor_write("\n");
+        }
+        else{
             monitor_write("Rest\n");
+        }
 
         play_sound(current_note.frequency);
 
         if (current_note.duration > 0)
             sleep_interrupt(current_note.duration);
 
-        disable_speaker();
     }
 
+    disable_speaker();
     monitor_write(stop_requested ? "Song stopped.\n" : "done!\n");
 }
 
 
-SongPlayer* create_song_player() {
-    SongPlayer* player = (SongPlayer*)malloc(sizeof(SongPlayer));
-    if (player) {
-        player->play_song = play_song_impl;
-    }
-    return player;
-}
 
 void play_song(Song *song) {
     play_song_impl(song);
